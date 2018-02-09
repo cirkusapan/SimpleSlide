@@ -24,6 +24,7 @@ reached the end it will move the oppisate directin)
                Play/Stop - As it's named the button is to start the sliders movment and if pressed while moving stops it.
                Direction Clockwise - Sets the direction of motor rotation to clockwise 
                Direction CounterClockwise - Sets the direction of motor rotation to CounterClockwise
+                        Addition to direction buttons: if possible when held for longer time starts to move the wagon in direction buttons direction at defalt speed.
                Bounce - a mode toggle that overwrite the stop at end command and instead just changes the direction so the wagon bounce-
                s from side to side
       Digital dial:
