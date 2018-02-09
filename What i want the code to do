@@ -1,0 +1,39 @@
+SimpleSlide
+
+this is going to be a simple explanation for how and what i want the slider to be able to do!
+
+i want the slider to have 4 buttons: play/stop, Direction Clockwise, Derection ConterClockwise and bounce.
+one digital rotory encoder so i can step the speed.
+i want a led controller that's controling one or two ledbars indicating speed and current direction.
+lastly im going to install a micro switch for startup calibration.
+
+so what do i want the slider to do?
+
+on startup:
+i want the slider to move towards the motor until it toutch the micro switch and there sets the minimum distance of the slider.
+im not going to install a second micro switch becose i dont want cables to both sides of the slider, want to be able to remove the motor
+and crontroler from the slider kind of easy.
+
+while running:
+the slider starts at the motor and have a mesured distance it can move in the oppisite direction, this to simplyfi and to be able to have
+different sliders with the same code.
+if the motor steps the maximum steps indicated in the code the wagon shall stop and chance the direction (if play is played after it has
+reached the end it will move the oppisate directin)
+
+      Buttons:
+               Play/Stop - As it's named the button is to start the sliders movment and if pressed while moving stops it.
+               Direction Clockwise - Sets the direction of motor rotation to clockwise 
+               Direction CounterClockwise - Sets the direction of motor rotation to CounterClockwise
+               Bounce - a mode toggle that overwrite the stop at end command and instead just changes the direction so the wagon bounce-
+               s from side to side
+      Digital dial:
+               When tured i want the speed variable to increse or decrese and if there is a punch function also reset to defoult speed
+
+Parts i am using!
+i will paste part of the ebay links here, im not the tecnical type so it's not me that's deciding the parts :P
+
+https://www.ebay.com/itm/10PCS-10-Segment-Digital-Green-LED-Bar-Graph-Display-Ultra-Bright/191784230648?ssPageName=STRK%3AMEBIDX%3AIT&_trksid=p2057872.m2749.l2649
+https://www.ebay.com/itm/Extruder-Gear-Stepper-Motor-Ratio-3-7-1-Planetary-Gearbox-Nema-17-Step-Motor/131606829106?ssPageName=STRK%3AMEBIDX%3AIT&_trksid=p2057872.m2749.l2649
+https://www.ebay.com/itm/10pcs-HT16K33-LED-Dot-Matrix-Drive-Control-Module-Digital-Tube-Driver-Developmen/142251451710?ssPageName=STRK%3AMEBIDX%3AIT&_trksid=p2057872.m2749.l2649
+https://www.ebay.com/itm/Seeed-Studio-Grove-Led-Bar-10-Individually-Programmable-Segments-3-3v-5v-Input/132291713502?ssPageName=STRK%3AMEBIDX%3AIT&_trksid=p2057872.m2749.l2649
+
