@@ -30,33 +30,37 @@
 #define bounce_pin			x
 
 //code setup
-#define go = 1
-#define stop = 0
-#define
+#define maxSpeed = y
 
 float Speed
-float maxSpeed
 float acceleration
 
 boolean Bounce = false
 boolean Move = false
 
 int Rotorystate
-int	prevRotorystate
+int prevRotorystate
 int direction = 1
-
 
 AccelStepper stepper1(forwardstep1, backwardstep1)
 
 
 void setup() 
 {
-  // put your setup code here, to run once:
 
+
+	currentPosition = 0
+	didstanceToGo = 3000
+	
 }
 void loop() 
 {
- 
+	readLoopButtons
+	
+	
+	stepper.run();
+	
+	
 }
 void readLoopButtons
 {
