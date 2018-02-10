@@ -19,8 +19,8 @@
 //Inputs
 
 //Rotatory pulse encoder
-#define rotorypulsA_pin	x
-#define rotorypulsB_pin	x
+#define rotorypulsA_pin		x
+#define rotorypulsB_pin		x
 #define clickrotorpuls_pin	x
 
 //Buttons
@@ -30,8 +30,8 @@
 #define bounce_pin			x
 
 //code setup
-#define direction = x
-#define
+#define go = 1
+#define stop = 0
 #define
 
 float Speed
@@ -39,12 +39,11 @@ float maxSpeed
 float acceleration
 
 boolean Bounce = false
-boolean move = false
+boolean Move = false
 
 int Rotorystate
 int	prevRotorystate
-int x = 1
-int 
+int direction = 1
 
 
 AccelStepper stepper1(forwardstep1, backwardstep1)
@@ -61,23 +60,36 @@ void loop()
 }
 void readLoopButtons
 {
-	switch
+	if (digitalRead(upbotton_pin) == LOW)
 	{
-		case 0:
-		if (digitalRead(upbotton_pin) == LOW)
+		direction = 1
+	}
+	if (digitalRead(downbutton_pin) == LOW)
+	{
+		direction = -1
+	}
+	if (digitalRead(stopgo_pin) == LOW)
+	{
+		if (Move == true)
 		{
-			
+			Move = false
 		}
-		break;
-		case 1:
-		
-		break;
-		case 2:
-		break;
-		case 3:
-		break;
-		
-	}	
+		else
+		{
+			Move = true
+		}
+	}
+	if (digitalRead(bounce_pin) == LOW)
+	{
+		if (Bounce = true)
+		{
+			Bounce = false
+		}
+		else
+		{
+			Bounce = true
+		}
+	}
 }
 void rotorypuls
 {	
