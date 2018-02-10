@@ -47,22 +47,46 @@ AccelStepper stepper1(forwardstep1, backwardstep1)
 
 void setup() 
 {
-
-
-	currentPosition = 0
-	didstanceToGo = 3000
-	
+	currentPosition = 0 	//must find how it adds to this counter
+	distanceToGo = 3000 	//maximum distance of track
 }
 void loop() 
 {
-	readLoopButtons
-	
-	
+	readLoopButtons 		//is this how i call on the "void readLoopButtons" function?
+	if (currentPosition == 3000)
+	{
+		if (Bounce == False)
+		{
+			Move = False		//if the motor has reached target location stop
+			direction = -1		//change direction
+			distanceToGo = 0	//set target location to begining of track
+		}
+		else
+		{
+			direction = -1
+			distanceToGo = 0
+		}
+	}
+	if (currentPosition == 0)
+	{
+		if (Bounce == False)
+		{
+			Move = False		
+			direction = 1		
+			distanceToGo = 3000	
+		}
+		else
+		{
+			direction = 1
+			distanceToGo = 3000
+		}
+	}
 	stepper.run();
 	
 	
+	
 }
-void readLoopButtons
+void readLoopButtons 		//reads if any buttons if pressed
 {
 	if (digitalRead(upbotton_pin) == LOW)
 	{
