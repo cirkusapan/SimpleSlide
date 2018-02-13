@@ -3,9 +3,11 @@
 //librarys
 #include <Encoder.h>
 #include <AccelStepper.h>
-#include
+
 
 //Outputs
+// All thesse need to get there pin number after the variable name
+// (eg. define DIR_pin 15)
 
 //Motor controller
 #define DIR_pin 			x
@@ -32,53 +34,62 @@
 //code setup
 #define maxSpeed = y
 
-float Speed
-float acceleration
 
-boolean Bounce = false
-boolean Move = false
+// Global variables (can be accessed everywhere)
 
-int Rotorystate
-int prevRotorystate
-int direction = 1
+float Speed;
+float acceleration;
 
-AccelStepper stepper1(forwardstep1, backwardstep1)
+boolean Bounce = false;
+boolean Move = false;
+
+int Rotorystate;
+int prevRotorystate;
+int direction = 1;
+
+int currentPosition; 	
+int distanceToGo;	//maximum distance of track
+
+// Dont know enough arduino-code to know if this is valid or not
+//AccelStepper stepper1(forwardstep1, backwardstep1);
+// My guess is though:
+AccelStepper stepper = AccelStepper(forwardstep1, backwardstep1)
 
 
 void setup() 
 {
-	currentPosition = 0 	//must find how it adds to this counter
-	distanceToGo = 3000 	//maximum distance of track
+	currentPosition = 0; 	//global variables can be changed by name
+	distanceToGo = 3000;
 }
 void loop() 
 {
-	readLoopButtons 		//is this how i call on the "void readLoopButtons" function?
+	readLoopButtons() 		//is this how i call on the "void readLoopButtons" function?
 	if (currentPosition == 3000)
 	{
-		if (Bounce == False)
+		if (Bounce == false)
 		{
-			Move = False		//if the motor has reached target location stop
-			direction = -1		//change direction
-			distanceToGo = 0	//set target location to begining of track
+			Move = false;		//if the motor has reached target location stop
+			direction = -1;		//change direction
+			distanceToGo = 0;	//set target location to begining of track
 		}
 		else
 		{
-			direction = -1
-			distanceToGo = 0
+			direction = -1;
+			distanceToGo = 0;
 		}
 	}
 	if (currentPosition == 0)
 	{
-		if (Bounce == False)
+		if (Bounce == false)
 		{
-			Move = False		
-			direction = 1		
-			distanceToGo = 3000	
+			Move = false;
+			direction = 1;		
+			distanceToGo = 3000;
 		}
 		else
 		{
-			direction = 1
-			distanceToGo = 3000
+			direction = 1;
+			distanceToGo = 3000;
 		}
 	}
 	stepper.run();
@@ -86,42 +97,42 @@ void loop()
 	
 	
 }
-void readLoopButtons 		//reads if any buttons if pressed
+void readLoopButtons() 		//reads if any buttons if pressed
 {
 	if (digitalRead(upbotton_pin) == LOW)
 	{
-		direction = 1
+		direction = 1;
 	}
 	if (digitalRead(downbutton_pin) == LOW)
 	{
-		direction = -1
+		direction = -1;
 	}
 	if (digitalRead(stopgo_pin) == LOW)
 	{
 		if (Move == true)
 		{
-			Move = false
+			Move = false;
 		}
 		else
 		{
-			Move = true
+			Move = true;
 		}
 	}
 	if (digitalRead(bounce_pin) == LOW)
 	{
 		if (Bounce = true)
 		{
-			Bounce = false
+			Bounce = false;
 		}
 		else
 		{
-			Bounce = true
+			Bounce = true;
 		}
 	}
 }
-void rotorypuls
+void rotorypuls()
 {	
-	Rotorystate = digitalRead(rotorypulsA_pin)
+	int Rotorystate = digitalRead(rotorypulsA_pin);
 	if (Rotorystate != prevRotorystate)
 	{
 		if (digitalRead(rotorypulsB_pin) != Rotorystate)
@@ -130,16 +141,16 @@ void rotorypuls
 		}
 		else
 		{
-			setSpeed --
+			setSpeed --;
 		}
 	}
-	prevRotorystate = Rotorystate
+	prevRotorystate = Rotorystate;
 }
-void forwardstep1 
+void forwardstep1()
 {  
   motor1.onestep(FORWARD, SINGLE);
 }
-void backwardstep1 
+void backwardstep1()
 {  
   motor1.onestep(BACKWARD, SINGLE);
 }
